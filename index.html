@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+
+    <link rel="stylesheet" href="./src/style.css" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="search">
+        <form class="form">
+          <input
+            class="searchInput"
+            type="text"
+            placeholder="Search a city (i.e. Lisbon, Tokyo, Paris, ...)"
+          />
+          <button type="button" class="currentLocation">
+            <img src="./media/Location.png" alt="Location" />
+          </button>
+        </form>
+      </section>
+
+      <section class="hero">
+        <div class="hero-left">
+          <section class="location">
+            <h1>Sari</h1>
+            <p>
+              <span class="day">Sun </span>
+              <span class="time">13:52</span>
+            </p>
+          </section>
+
+          <section class="currentTemp">
+            <h1>
+              <span class="currentTempDegree">34</span>
+              <span>
+                <button type="button" class="celsius" disabled>C°</button>
+                |
+                <button type="button" class="fahrenheit">F</button>
+              </span>
+            </h1>
+            <p class="description">Fair</p>
+          </section>
+
+          <section class="index">
+            Humidity: <span class="hum">45</span>% <br />
+            Wind: <span class="wind">8</span> km/h <br />
+            Pressure: <span class="pressure">1009</span> hPa
+          </section>
+        </div>
+
+        <div class="hero-right">
+          <img class="emoji" src="./media/w1.png" alt="emoji" />
+          <p>
+            <strong class="tempMax">35</strong>° /
+            <span class="tempMin">20</span>°
+          </p>
+        </div>
+      </section>
+
+      <div class="forcast">
+        <section class="forcast-item">
+          <h3>Mon</h3>
+          <img src="./media/w2.png" alt="emoji" />
+          <p><strong>35°</strong> / 20°</p>
+        </section>
+
+        <section class="forcast-item">
+          <h3>Tue</h3>
+          <img src="./media/w1.png" alt="emoji" />
+          <p><strong>38°</strong> / 21°</p>
+        </section>
+
+        <section class="forcast-item">
+          <h3>Wed</h3>
+          <img src="./media/w2.png" alt="emoji" />
+          <p><strong>28°</strong> / 19°</p>
+        </section>
+
+        <section class="forcast-item">
+          <h3>The</h3>
+          <img src="./media/w3.png" alt="emoji" />
+          <p><strong>26°</strong> / 18°</p>
+        </section>
+
+        <section class="forcast-item">
+          <h3>Fri</h3>
+          <img src="./media/w2.png" alt="emoji" />
+          <p><strong>27°</strong> / 19°</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="footer">
+      <p>Created by Parnaz Vandadi <br> 
+        <a href="">Github</a>
+      </p>
+    </section>
+
+    <script src="./src/index.js"></script>
+  </body>
+</html>
