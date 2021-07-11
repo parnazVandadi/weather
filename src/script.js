@@ -1,8 +1,17 @@
 let activeTempUnit = "c";
 let mappedEmoji = {
-  "few clouds": "./media/w3.png",
-  Drizzle: "./media/w2.png",
-  Clear: "./media/w1.png"
+  Clouds:
+    "http://www.gstatic.com/images/icons/material/apps/weather/2x/mostly_cloudy_day_light_color_96dp.png",
+  "few clouds":
+    "http://www.gstatic.com/images/icons/material/apps/weather/2x/partly_cloudy_light_color_96dp.png",
+  Drizzle:
+    "http://www.gstatic.com/images/icons/material/apps/weather/2x/drizzle_light_color_96dp.png",
+  Mist: "http://www.gstatic.com/images/icons/material/apps/weather/2x/haze_fog_dust_smoke_light_color_96dp.png",
+  Haze: "http://www.gstatic.com/images/icons/material/apps/weather/2x/haze_fog_dust_smoke_light_color_96dp.png",
+  Clear:
+    "http://www.gstatic.com/images/icons/material/apps/weather/2x/sunny_light_color_96dp.png",
+  Rain: "http://www.gstatic.com/images/icons/material/apps/weather/2x/showers_rain_light_color_96dp.png",
+  Snow: "http://www.gstatic.com/images/icons/material/apps/weather/2x/snow_showers_snow_light_color_96dp.png",
 };
 
 function init() {
@@ -36,7 +45,7 @@ function changeTempUnit() {
   if (activeTempUnit === "c") {
     currentTempDegreeElement.innerHTML = convertToF(
       Number(currentTempDegreeElement.innerHTML)
-    ).toFixed(1);
+    ).toFixed(0);
 
     activeTempUnit = "f";
     FButtonElement.disabled = true; // disabled
@@ -82,7 +91,7 @@ function displayWeather(response) {
   if (mappedEmoji[weatherInfo.weather[0].main]) {
     emojiElement.src = mappedEmoji[weatherInfo.weather[0].main];
   } else {
-    emojiElement.src = "./media/w2.png";
+    emojiElement.src = mappedEmoji["few clouds"];
   }
 }
 
