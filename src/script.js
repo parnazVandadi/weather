@@ -1,4 +1,5 @@
 let activeTempUnit = "c";
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let mappedEmoji = {
   Clouds:
     "http://www.gstatic.com/images/icons/material/apps/weather/2x/mostly_cloudy_day_light_color_96dp.png",
@@ -17,7 +18,6 @@ let mappedEmoji = {
 function init() {
   let now = new Date();
 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let today = days[now.getDay()];
 
   let day = document.querySelector(".day");
@@ -62,10 +62,10 @@ function changeTempUnit() {
 }
 
 function displayWeather(response) {
-  let weatherInfo = response.data;
-
+  let cityName = response.data.city.name;
+  let weatherInfo = response.data.list[0];
   let cityElement = document.querySelector(".location >h1");
-  cityElement.innerHTML = weatherInfo.name;
+  cityElement.innerHTML = cityName;
 
   let temperature = Math.round(weatherInfo.main.temp);
   let temperatureElement = document.querySelector(".currentTempDegree");
@@ -93,6 +93,37 @@ function displayWeather(response) {
   } else {
     emojiElement.src = mappedEmoji["few clouds"];
   }
+
+  for (let index = 1; index <= response.data.list.length; index++) {
+    displayForecast(response.data.list[index], index);
+  }
+}
+
+function displayForecast(response, index) {
+  let dayElement = document.querySelector(`.forcast-item-${index} > h3`);
+  let currentTempMaxElement = document.querySelector(
+    `.forcast-item-${index} > p > strong`
+  );
+  let currentTempMinElement = document.querySelector(
+    `.forcast-item-${index} > p > span`
+  );
+  let emojiElement = document.querySelector(`.forcast-item-${index} > img`);
+
+  let thisDay = new Date().getDay() + index;
+  let thisDayName = days[thisDay % 6];
+
+  let maxTemperature = Math.round(response.main.temp_max);
+  let minTemperature = Math.round(response.main.temp_min);
+
+  dayElement.innerHTML = thisDayName;
+  currentTempMaxElement.innerHTML = maxTemperature;
+  currentTempMinElement.innerHTML = minTemperature;
+
+  if (mappedEmoji[response.weather[0].main]) {
+    emojiElement.src = mappedEmoji[response.weather[0].main];
+  } else {
+    emojiElement.src = mappedEmoji["few clouds"];
+  }
 }
 
 function showPosition(position) {
@@ -117,7 +148,7 @@ function citySearch(event) {
   if (input.value.length) {
     let city = input.value;
     let apiKey = "43b696b9d4c3a7541d4a9b0cbe41a3ac";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast/?q=${city}&cnt=6&appid=${apiKey}&units=metric`;
     axios
       .get(apiUrl)
       .then(displayWeather)
