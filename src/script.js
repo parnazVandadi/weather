@@ -1,5 +1,8 @@
 let activeTempUnit = "c";
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+let apiKey = "43b696b9d4c3a7541d4a9b0cbe41a3ac";
+
 let mappedEmoji = {
   Clouds:
     "http://www.gstatic.com/images/icons/material/apps/weather/2x/mostly_cloudy_day_light_color_96dp.png",
@@ -130,8 +133,7 @@ function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
 
-  let apiKey = "43b696b9d4c3a7541d4a9b0cbe41a3ac";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&cnt=6&appid=${apiKey}&units=metric`;
 
   axios
     .get(apiUrl)
@@ -147,7 +149,6 @@ function citySearch(event) {
 
   if (input.value.length) {
     let city = input.value;
-    let apiKey = "43b696b9d4c3a7541d4a9b0cbe41a3ac";
     let apiUrl = `https://api.openweathermap.org/data/2.5/forecast/?q=${city}&cnt=6&appid=${apiKey}&units=metric`;
     axios
       .get(apiUrl)
@@ -159,7 +160,9 @@ function citySearch(event) {
 }
 
 function getCurrentPosition() {
-  navigator.geolocation.getCurrentPosition(showPosition);
+  navigator.geolocation.getCurrentPosition(showPosition, (error) => {
+    console.log({ error });
+  });
 }
 
 init();
