@@ -4,18 +4,14 @@ let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 let apiKey = "43b696b9d4c3a7541d4a9b0cbe41a3ac";
 
 let mappedEmoji = {
-  Clouds:
-    "http://www.gstatic.com/images/icons/material/apps/weather/2x/mostly_cloudy_day_light_color_96dp.png",
-  "few clouds":
-    "http://www.gstatic.com/images/icons/material/apps/weather/2x/partly_cloudy_light_color_96dp.png",
-  Drizzle:
-    "http://www.gstatic.com/images/icons/material/apps/weather/2x/drizzle_light_color_96dp.png",
-  Mist: "http://www.gstatic.com/images/icons/material/apps/weather/2x/haze_fog_dust_smoke_light_color_96dp.png",
-  Haze: "http://www.gstatic.com/images/icons/material/apps/weather/2x/haze_fog_dust_smoke_light_color_96dp.png",
-  Clear:
-    "http://www.gstatic.com/images/icons/material/apps/weather/2x/sunny_light_color_96dp.png",
-  Rain: "http://www.gstatic.com/images/icons/material/apps/weather/2x/showers_rain_light_color_96dp.png",
-  Snow: "http://www.gstatic.com/images/icons/material/apps/weather/2x/snow_showers_snow_light_color_96dp.png",
+  Clouds: "media/mostly_cloudy_day_light_color_96dp.png",
+  "few clouds": "media/partly_cloudy_light_color_96dp.png",
+  Drizzle: "media/drizzle_light_color_96dp.png",
+  Mist: "media/haze_fog_dust_smoke_light_color_96dp.png",
+  Haze: "media/haze_fog_dust_smoke_light_color_96dp.png",
+  Clear: "media/sunny_light_color_96dp.png",
+  Rain: "media/showers_rain_light_color_96dp.png",
+  Snow: "media/snow_showers_snow_light_color_96dp.png",
 };
 
 function init() {
